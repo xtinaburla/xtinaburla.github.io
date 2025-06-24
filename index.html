@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типография "Призма" | Печать визиток, наклеек, буклетов</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        /* Общие стили */
+        :root {
+            --primary: #239439;
+            --secondary: #A9B4B5;
+            --dark: #333333;
+            --light: #FFFFFF;
+            --gray: #F5F5F5;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--gray);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            height: 50px;
+        }
+        .logo h1 {
+            color: var(--light);
+            font-size: 24px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        /* Герой-баннер */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.vuzopedia.ru/storage/app/uploads/public/5f6/234/043/5f62340436019282505345.jpg') center/cover;
+            color: var(--light);
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #1c7a2e;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        .btn-disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .order-note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Уведомление о необходимости авторизации */
+        .auth-notice {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #ffeeba;
+            display: flex;
+            align-items: center;
+        }
+        .auth-notice a {
+            color: #0056b3;
+            text-decoration: underline;
+            margin-left: 5px;
+        }
+        .auth-notice a:hover {
+            text-decoration: none;
+        }
+        .auth-notice svg {
+            margin-right: 10px;
+            min-width: 20px;
+        }
+
+        /* Услуги */
+        .services {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 25%;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .service-card-content {
+            padding: 20px;
+        }
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .service-card p {
+            margin-bottom: 15px;
+        }
+        .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        /* Калькулятор */
+        .calculator {
+            background-color: var(--secondary);
+            padding: 50px 0;
+            margin: 40px 0;
+        }
+        .calculator-container {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .calculator h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-size: 24px;
+        }
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group select, 
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            min-height: 80px;
+        }
+        .options-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .option-checkbox {
+            display: none;
+        }
+        .option-label {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--gray);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option-checkbox:checked + .option-label {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        .density-options {
+            margin-top: 10px;
+        }
+        .foil-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .foil-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+        .foil-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+        .foil-circle.selected {
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+        .foil-label {
+            font-size: 14px;
+            text-align: center;
+        }
+        .product-options {
+            grid-column: span 2;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+        .product-options.active {
+            display: block;
+        }
+        .file-upload {
+            margin-top: 15px;
+        }
+        .file-upload label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .file-upload input {
+            display: none;
+        }
+        .file-upload-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--gray);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .file-upload-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .calculator-result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--gray);
+            border-radius: 4px;
+            text-align: center;
+            grid-column: span 2;
+        }
+        .calculator-result p {
+            font-size: 18px;
+        }
+        .total-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        /* Футер */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+            }
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="C:/Users/burla/Desktop/web/prismalogo.jpg" alt="Логотип Призма">
+                <h1>Призма</h1>
+            </div>
+            <nav>
+                <ul>
+                <li><a href="index.html">Главная</a></li>
+		<li><a href="contacts.html">Контакты</a></li>
+		<li><a href="login.html">Личный кабинет</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-баннер -->
+    <section class="hero">
+        <div class="container">
+            <h2>Профессиональная печать в типографии Призма</h2>
+            <p>Высокое качество печати, широкий ассортимент материалов и отделки. Создадим продукцию, которая подчеркнёт ваш стиль!</p>
+            <a href="#calculator" class="btn">Рассчитать стоимость</a>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+            </div>
+            <div class="services-grid">
+                <!-- Визитки -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/15/e6/f4/15e6f43456926c8a99896739290ec400.jpg" alt="Визитки">
+                    <div class="service-card-content">
+                        <h3>Визитки</h3>
+                        <p>Стандартные и нестандартные форматы, мелованный картон, тиснение фольгой.</p>
+                        <p class="price">от 500 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Наклейки -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/01/91/39/01913975a041fadc109eee179a7f36ec.jpg" alt="Наклейки">
+                    <div class="service-card-content">
+                        <h3>Наклейки</h3>
+                        <p>Круглые, квадратные, на листах с резкой. Самоклейка бумажная или глянцевая.</p>
+                        <p class="price">от 300 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Открытки -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/63/bf/07/63bf07e16cc129986e332669137119f0.jpg" alt="Открытки">
+                    <div class="service-card-content">
+                        <h3>Открытки</h3>
+                        <p>Формат 105×148 мм, мелованная бумага, матовая/глянцевая ламинация.</p>
+                        <p class="price">от 200 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Буклеты -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/c0/64/c7/c064c7697464dbf7fccdee6ac4326ccf.jpg" alt="Буклеты">
+                    <div class="service-card-content">
+                        <h3>Буклеты</h3>
+                        <p>Форматы A4, A5, евробуклет. Печать на мелованной бумаге 200 г/м².</p>
+                        <p class="price">от 1000 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Журналы -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/45/91/77/459177f97fea2864e1ff41a236452646.jpg" alt="Журналы">
+                    <div class="service-card-content">
+                        <h3>Журналы</h3>
+                        <p>Глянцевые журналы, мягкая обложка, полноцветная печать.</p>
+                        <p class="price">от 2000 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Коробки -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/1d/cb/36/1dcb36784f13bdf282636a499f38da13.jpg" alt="Коробки">
+                    <div class="service-card-content">
+                        <h3>Коробки</h3>
+                        <p>Индивидуальные макеты, картон 300–350 г/м², тиснение фольгой.</p>
+                        <p class="price">от 1500 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Календари -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/66/e5/d3/66e5d3a551413ec02d5e95cc33dd053c.jpg" alt="Календари">
+                    <div class="service-card-content">
+                        <h3>Календари</h3>
+                        <p>Квартальные, настольные, перекидные. Печать на плотной бумаге.</p>
+                        <p class="price">от 800 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Блокноты -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/93/a2/bb/93a2bb8f2a824cecc3e089a898122cd0.jpg" alt="Блокноты">
+                    <div class="service-card-content">
+                        <h3>Блокноты</h3>
+                        <p>Твёрдая и мягкая обложка, различная плотность бумаги.</p>
+                        <p class="price">от 1200 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Листовки и флаеры -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/42/f3/36/42f3365dc0f7ed81ad104a1709f31a0b.jpg" alt="Листовки">
+                    <div class="service-card-content">
+                        <h3>Листовки и флаеры</h3>
+                        <p>Стандартные форматы, печать на мелованной бумаге.</p>
+                        <p class="price">от 150 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+
+                <!-- Книги -->
+                <div class="service-card">
+                    <img src="https://i.pinimg.com/736x/b4/6e/5c/b46e5c25455e0b848fdc4df96e851fb4.jpg" alt="Книги">
+                    <div class="service-card-content">
+                        <h3>Книги</h3>
+                        <p>Мягкая и твёрдая обложка, различные форматы.</p>
+                        <p class="price">от 2500 ₽</p>
+                        <a href="#calculator" class="btn">Заказать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section class="calculator" id="calculator">
+        <div class="container calculator-container">
+            <h3>Рассчитайте стоимость заказа</h3>
+            <form id="price-calculator">
+                <div class="calculator-grid">
+                    <div class="form-group">
+                        <label for="product-type">Тип продукции</label>
+                        <select id="product-type">
+                            <option value="visiting-card">Визитки</option>
+                            <option value="sticker">Наклейки</option>
+                            <option value="postcard">Открытки</option>
+                            <option value="booklet">Буклеты</option>
+                            <option value="magazine">Журналы</option>
+                            <option value="box">Коробки</option>
+                            <option value="calendar">Календари</option>
+                            <option value="notebook">Блокноты</option>
+                            <option value="flyer">Листовки</option>
+                            <option value="book">Книги</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Тираж (шт.)</label>
+                        <input type="number" id="quantity" min="500" value="500">
+                    </div>
+                    <div class="form-group">
+                        <label for="material-type">Материал</label>
+                        <select id="material-type">
+                            <option value="offset">Офсетная бумага</option>
+                            <option value="coated">Мелованная бумага</option>
+                            <option value="design">Дизайнерская бумага</option>
+                            <option value="kraft">Крафтовая бумага</option>
+                            <option value="cardboard">Картон</option>
+                            <option value="self-adhesive">Самоклеящаяся бумага</option>
+                        </select>
+                        <div class="density-options">
+                            <label>Плотность</label>
+                            <div class="options-group">
+                                <input type="radio" id="density-1" name="density" value="65" class="option-checkbox">
+                                <label for="density-1" class="option-label">65 г/м²</label>
+                                
+                                <input type="radio" id="density-2" name="density" value="100-130" class="option-checkbox" checked>
+                                <label for="density-2" class="option-label">100–130 г/м²</label>
+                                
+                                <input type="radio" id="density-3" name="density" value="150-200" class="option-checkbox">
+                                <label for="density-3" class="option-label">150–200 г/м²</label>
+                                
+                                <input type="radio" id="density-4" name="density" value="250-350" class="option-checkbox">
+                                <label for="density-4" class="option-label">250–350 г/м²</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="lamination-group">
+                        <label>Ламинация</label>
+                        <div class="options-group">
+                            <input type="radio" id="lamination-none" name="lamination" value="none" class="option-checkbox" checked>
+                            <label for="lamination-none" class="option-label">Нет</label>
+                            
+                            <input type="radio" id="lamination-glossy" name="lamination" value="glossy" class="option-checkbox">
+                            <label for="lamination-glossy" class="option-label">Глянцевая</label>
+                            
+                            <input type="radio" id="lamination-matte" name="lamination" value="matte" class="option-checkbox">
+                            <label for="lamination-matte" class="option-label">Матовая</label>
+                            
+                            <input type="radio" id="lamination-soft" name="lamination" value="soft" class="option-checkbox">
+                            <label for="lamination-soft" class="option-label">Софт-тач</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="lamination-side-group" style="display: none;">
+                        <label>Стороны ламинации</label>
+                        <div class="options-group">
+                            <input type="radio" id="lamination-side-1" name="lamination-side" value="one" class="option-checkbox" checked>
+                            <label for="lamination-side-1" class="option-label">Одна сторона</label>
+                            
+                            <input type="radio" id="lamination-side-2" name="lamination-side" value="two" class="option-checkbox">
+                            <label for="lamination-side-2" class="option-label">Две стороны</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="foil-group">
+                        <label>Тиснение фольгой</label>
+                        <div class="foil-options">
+                            <div class="foil-option" data-value="none">
+                                <div class="foil-circle"></div>
+                                <span class="foil-label">Нет</span>
+                            </div>
+                            <div class="foil-option" data-value="gold">
+                                <div class="foil-circle" style="background: gold;"></div>
+                                <span class="foil-label">Золото</span>
+                            </div>
+                            <div class="foil-option" data-value="silver">
+                                <div class="foil-circle" style="background: silver;"></div>
+                                <span class="foil-label">Серебро</span>
+                            </div>
+                            <div class="foil-option" data-value="holo">
+                                <div class="foil-circle" style="background: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #cc33ff);"></div>
+                                <span class="foil-label">Голография</span>
+                            </div>
+                            <div class="foil-option" data-value="black">
+                                <div class="foil-circle" style="background: black;"></div>
+                                <span class="foil-label">Чёрная</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="foil-type" value="none">
+                    </div>
+                </div>
+
+                <!-- Дополнительные опции для каждого типа продукта -->
+                <div id="product-options" class="product-options">
+                    <!-- Опции будут добавляться динамически -->
+                </div>
+
+                <!-- Загрузка макета -->
+                <div class="form-group file-upload">
+                    <label>Загрузите макет (если есть)</label>
+                    <input type="file" id="file-upload" accept=".pdf,.ai,.eps,.cdr,.psd,.jpg,.jpeg,.png">
+                    <label for="file-upload" class="file-upload-btn">Выберите файл</label>
+                    <span id="file-name">Файл не выбран</span>
+                </div>
+
+                <!-- Комментарий к заказу -->
+                <div class="form-group">
+                    <label for="order-comment">Комментарий к заказу</label>
+                    <textarea id="order-comment" placeholder="Укажите дополнительные пожелания"></textarea>
+                </div>
+
+                <div class="calculator-result">
+                    <p>Примерная стоимость:</p>
+                    <p class="total-price">0 ₽</p>
+                </div>
+                
+                <!-- Уведомление о необходимости авторизации -->
+                <div class="auth-notice" id="auth-notice">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                    </svg>
+                    Перед оформлением заказа необходимо <a href="login.html">авторизоваться</a>
+                </div>
+                
+                <button type="submit" class="btn btn-disabled" id="order-button" disabled>Оформить заказ</button>
+                <p class="order-note">После оформления заказа с вами свяжется менеджер для уточнения деталей</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>Адрес: г. Иркутск ул. Рабочего Штаба, 78/5</li>
+                        <li>+7 (395) 248-22-02</li>
+                        <li>prisma-irk@mail.ru</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>О компании</h3>
+                    <ul>
+                        <li><a href="mission.html">Наша миссия</a></li>
+			<li><a href="payment.html">Оплата</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Типография «Призма». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Ограничения по материалам
+        const materialLimitations = {
+            'box': ['cardboard'],
+            'magazine': ['offset', 'coated', 'design'],
+            'book': ['offset', 'coated', 'design'],
+            'calendar': ['offset', 'coated', 'cardboard'],
+            'notebook': ['offset', 'coated', 'design', 'kraft'],
+            'flyer': ['offset', 'coated', 'self-adhesive'],
+            'sticker': ['self-adhesive']
+        };
+
+        // Плотности материалов
+        const densityOptions = {
+            'offset': ['65', '100-130', '150-200'],
+            'coated': ['100-130', '150-200', '250-350'],
+            'design': ['100-130', '150-200', '250-350'],
+            'kraft': ['100-130', '150-200'],
+            'cardboard': ['250-350'],
+            'self-adhesive': ['100-130', '150-200']
+        };
+
+        // Базовые цены для расчета с минимальными ценами
+        const basePrices = {
+            'visiting-card': { 
+                minPrice: 500,
+                base: 0.8,
+                size: { 'standard': 0, 'custom': 0.3 },
+                material: {
+                    'offset': 0,
+                    'coated': 0.2,
+                    'design': 0.4,
+                    'kraft': 0.3,
+                    'cardboard': 0.5,
+                    'self-adhesive': 0
+                },
+                density: {
+                    '65': 0,
+                    '100-130': 0.1,
+                    '150-200': 0.2,
+                    '250-350': 0.3
+                }
+            },
+            'sticker': { 
+                minPrice: 300,
+                base: 0.5,
+                cut: { 'plotter': 0, 'die-cut': 0.2, 'none': -0.1 },
+                format: { 'a4': 0, 'a5': -0.1, 'a6': -0.2 },
+                material: {
+                    'self-adhesive': 0.1
+                }
+            },
+            'postcard': { 
+                minPrice: 200,
+                base: 1.2,
+                sides: { 'one': 0, 'two': 0.5 },
+                lamination: { 'none': 0, 'glossy': 0.3, 'matte': 0.4, 'soft': 0.5 }
+            },
+            'booklet': { 
+                minPrice: 1000,
+                base: 2.5,
+                format: { 'euro': 0, 'custom': 1 }
+            },
+            'magazine': { 
+                minPrice: 2000,
+                base: 5,
+                pages: { perPage: 0.1 },
+                cover: { 'lamination': 2, 'foil': 3, 'none': 0 },
+                binding: { 'kbs': 1, 'clip': 0.5 }
+            },
+            'box': { 
+                minPrice: 1500,
+                base: 10,
+                foil: 3,
+                material: {
+                    'cardboard': 0
+                }
+            },
+            'calendar': { 
+                minPrice: 800,
+                base: 3,
+                type: { 'quarter': 0, 'house': 1.5, 'desk': 2 }
+            },
+            'notebook': { 
+                minPrice: 1200,
+                base: 8,
+                binding: { 'clip': 0, 'spring': 2 },
+                format: { 'a5': 0, 'a6': -1 },
+                pages: 0.1
+            },
+            'flyer': { 
+                minPrice: 150,
+                base: 0.3,
+                format: { 'a4': 0, 'a5': -0.1, 'a6': -0.15 },
+                quantityDiscount: {
+                    '1000': 0.05,
+                    '5000': 0.1,
+                    '10000': 0.15
+                }
+            },
+            'book': { 
+                minPrice: 2500,
+                base: 15,
+                pages: { perPage: 0.08 },
+                binding: { 'soft': 0, 'hard': 5 },
+                cover: { 'lamination': 3, 'foil': 5, 'none': 0 }
+            }
+        };
+
+        // Опции для каждого типа продукта
+        const productOptions = {
+            'visiting-card': `
+                <div class="form-group">
+                    <label>Размер визитки</label>
+                    <div class="options-group">
+                        <input type="radio" id="visiting-size-1" name="visiting-size" value="standard" class="option-checkbox" checked>
+                        <label for="visiting-size-1" class="option-label">Стандартный (90×50 мм)</label>
+                        
+                        <input type="radio" id="visiting-size-2" name="visiting-size" value="custom" class="option-checkbox">
+                        <label for="visiting-size-2" class="option-label">Нестандартный</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Количество сторон печати</label>
+                    <div class="options-group">
+                        <input type="radio" id="visiting-sides-1" name="visiting-sides" value="one" class="option-checkbox" checked>
+                        <label for="visiting-sides-1" class="option-label">Односторонние</label>
+                        
+                        <input type="radio" id="visiting-sides-2" name="visiting-sides" value="two" class="option-checkbox">
+                        <label for="visiting-sides-2" class="option-label">Двусторонние</label>
+                    </div>
+                </div>
+            `,
+            'sticker': `
+                <div class="form-group">
+                    <label>Формат наклеек</label>
+                    <div class="options-group">
+                        <input type="radio" id="sticker-format-1" name="sticker-format" value="a4" class="option-checkbox" checked>
+                        <label for="sticker-format-1" class="option-label">А4</label>
+                        
+                        <input type="radio" id="sticker-format-2" name="sticker-format" value="a5" class="option-checkbox">
+                        <label for="sticker-format-2" class="option-label">А5</label>
+                        
+                        <input type="radio" id="sticker-format-3" name="sticker-format" value="a6" class="option-checkbox">
+                        <label for="sticker-format-3" class="option-label">А6</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Тип резки</label>
+                    <div class="options-group">
+                        <input type="radio" id="sticker-cut-1" name="sticker-cut" value="plotter" class="option-checkbox" checked>
+                        <label for="sticker-cut-1" class="option-label">Плоттерная</label>
+                        
+                        <input type="radio" id="sticker-cut-2" name="sticker-cut" value="die-cut" class="option-checkbox">
+                        <label for="sticker-cut-2" class="option-label">Вырубка</label>
+                        
+                        <input type="radio" id="sticker-cut-3" name="sticker-cut" value="none" class="option-checkbox">
+                        <label for="sticker-cut-3" class="option-label">Без резки</label>
+                    </div>
+                </div>
+                <div class="form-group" id="sticker-diameter-group" style="display:none;">
+                    <label>Диаметр вырубки</label>
+                    <div class="options-group">
+                        <input type="radio" id="sticker-diameter-30" name="sticker-diameter" value="30" class="option-checkbox">
+                        <label for="sticker-diameter-30" class="option-label">30 мм</label>
+                        
+                        <input type="radio" id="sticker-diameter-40" name="sticker-diameter" value="40" class="option-checkbox">
+                        <label for="sticker-diameter-40" class="option-label">40 мм</label>
+                        
+                        <input type="radio" id="sticker-diameter-60" name="sticker-diameter" value="60" class="option-checkbox">
+                        <label for="sticker-diameter-60" class="option-label">60 мм</label>
+                    </div>
+                </div>
+            `,
+            'postcard': `
+                <div class="form-group">
+                    <label>Тип печати</label>
+                    <div class="options-group">
+                        <input type="radio" id="postcard-print-1" name="postcard-print" value="one" class="option-checkbox" checked>
+                        <label for="postcard-print-1" class="option-label">Односторонняя</label>
+                        
+                        <input type="radio" id="postcard-print-2" name="postcard-print" value="two" class="option-checkbox">
+                        <label for="postcard-print-2" class="option-label">Двухсторонняя</label>
+                    </div>
+                </div>
+            `,
+            'booklet': `
+                <div class="form-group">
+                    <label>Формат буклета</label>
+                    <div class="options-group">
+                        <input type="radio" id="booklet-format-1" name="booklet-format" value="euro" class="option-checkbox" checked>
+                        <label for="booklet-format-1" class="option-label">Евро</label>
+                        
+                        <input type="radio" id="booklet-format-2" name="booklet-format" value="custom" class="option-checkbox">
+                        <label for="booklet-format-2" class="option-label">Свой вариант</label>
+                    </div>
+                </div>
+            `,
+            'magazine': `
+                <div class="form-group">
+                    <label>Формат</label>
+                    <div class="options-group">
+                        <input type="radio" id="magazine-format-1" name="magazine-format" value="a4" class="option-checkbox" checked>
+                        <label for="magazine-format-1" class="option-label">А4</label>
+                        
+                        <input type="radio" id="magazine-format-2" name="magazine-format" value="a5" class="option-checkbox">
+                        <label for="magazine-format-2" class="option-label">А5</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Количество страниц</label>
+                    <input type="number" id="magazine-pages" min="8" max="200" value="32">
+                </div>
+                <div class="form-group">
+                    <label>Крепление</label>
+                    <div class="options-group">
+                        <input type="radio" id="magazine-binding-1" name="magazine-binding" value="kbs" class="option-checkbox" checked>
+                        <label for="magazine-binding-1" class="option-label">КБС</label>
+                        
+                        <input type="radio" id="magazine-binding-2" name="magazine-binding" value="clip" class="option-checkbox">
+                        <label for="magazine-binding-2" class="option-label">Скрепка</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Обложка</label>
+                    <div class="options-group">
+                        <input type="radio" id="magazine-cover-1" name="magazine-cover" value="none" class="option-checkbox" checked>
+                        <label for="magazine-cover-1" class="option-label">Без обработки</label>
+                        
+                        <input type="radio" id="magazine-cover-2" name="magazine-cover" value="lamination" class="option-checkbox">
+                        <label for="magazine-cover-2" class="option-label">Ламинация</label>
+                        
+                        <input type="radio" id="magazine-cover-3" name="magazine-cover" value="foil" class="option-checkbox">
+                        <label for="magazine-cover-3" class="option-label">Тиснение</label>
+                    </div>
+                </div>
+            `,
+            'calendar': `
+                <div class="form-group">
+                    <label>Тип календаря</label>
+                    <div class="options-group">
+                        <input type="radio" id="calendar-type-1" name="calendar-type" value="quarter" class="option-checkbox" checked>
+                        <label for="calendar-type-1" class="option-label">Квартальный</label>
+                        
+                        <input type="radio" id="calendar-type-2" name="calendar-type" value="house" class="option-checkbox">
+                        <label for="calendar-type-2" class="option-label">Домик</label>
+                        
+                        <input type="radio" id="calendar-type-3" name="calendar-type" value="desk" class="option-checkbox">
+                        <label for="calendar-type-3" class="option-label">Настольный</label>
+                    </div>
+                </div>
+            `,
+            'notebook': `
+                <div class="form-group">
+                    <label>Тип сшивания</label>
+                    <div class="options-group">
+                        <input type="radio" id="notebook-binding-1" name="notebook-binding" value="clip" class="option-checkbox" checked>
+                        <label for="notebook-binding-1" class="option-label">Скрепка</label>
+                        
+                        <input type="radio" id="notebook-binding-2" name="notebook-binding" value="spring" class="option-checkbox">
+                        <label for="notebook-binding-2" class="option-label">Пружина</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Формат</label>
+                    <div class="options-group">
+                        <input type="radio" id="notebook-format-1" name="notebook-format" value="a5" class="option-checkbox" checked>
+                        <label for="notebook-format-1" class="option-label">А5</label>
+                        
+                        <input type="radio" id="notebook-format-2" name="notebook-format" value="a6" class="option-checkbox">
+                        <label for="notebook-format-2" class="option-label">А6</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Количество листов</label>
+                    <input type="number" id="notebook-pages" min="20" max="200" value="40">
+                </div>
+                <div class="form-group">
+                    <label>Разлиновка</label>
+                    <div class="options-group">
+                        <input type="radio" id="notebook-ruling-1" name="notebook-ruling" value="line" class="option-checkbox" checked>
+                        <label for="notebook-ruling-1" class="option-label">Линейка</label>
+                        
+                        <input type="radio" id="notebook-ruling-2" name="notebook-ruling" value="grid" class="option-checkbox">
+                        <label for="notebook-ruling-2" class="option-label">Клетка</label>
+                    </div>
+                </div>
+            `,
+            'book': `
+                <div class="form-group">
+                    <label>Формат</label>
+                    <div class="options-group">
+                        <input type="radio" id="book-format-1" name="book-format" value="a4" class="option-checkbox">
+                        <label for="book-format-1" class="option-label">А4</label>
+                        
+                        <input type="radio" id="book-format-2" name="book-format" value="a5" class="option-checkbox" checked>
+                        <label for="book-format-2" class="option-label">А5</label>
+                        
+                        <input type="radio" id="book-format-3" name="book-format" value="a6" class="option-checkbox">
+                        <label for="book-format-3" class="option-label">А6</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Количество страниц</label>
+                    <input type="number" id="book-pages" min="16" max="500" value="100">
+                </div>
+                <div class="form-group">
+                    <label>Переплет</label>
+                    <div class="options-group">
+                        <input type="radio" id="book-binding-1" name="book-binding" value="hard" class="option-checkbox">
+                        <label for="book-binding-1" class="option-label">Твердый</label>
+                        
+                        <input type="radio" id="book-binding-2" name="book-binding" value="soft" class="option-checkbox" checked>
+                        <label for="book-binding-2" class="option-label">Мягкий</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Обложка</label>
+                    <div class="options-group">
+                        <input type="radio" id="book-cover-1" name="book-cover" value="none" class="option-checkbox" checked>
+                        <label for="book-cover-1" class="option-label">Без обработки</label>
+                        
+                        <input type="radio" id="book-cover-2" name="book-cover" value="lamination" class="option-checkbox">
+                        <label for="book-cover-2" class="option-label">Ламинация</label>
+                        
+                        <input type="radio" id="book-cover-3" name="book-cover" value="foil" class="option-checkbox">
+                        <label for="book-cover-3" class="option-label">Тиснение</label>
+                    </div>
+                </div>
+            `,
+            'flyer': `
+                <div class="form-group">
+                    <label>Формат</label>
+                    <div class="options-group">
+                        <input type="radio" id="flyer-format-1" name="flyer-format" value="a4" class="option-checkbox" checked>
+                        <label for="flyer-format-1" class="option-label">А4</label>
+                        
+                        <input type="radio" id="flyer-format-2" name="flyer-format" value="a5" class="option-checkbox">
+                        <label for="flyer-format-2" class="option-label">А5</label>
+                        
+                        <input type="radio" id="flyer-format-3" name="flyer-format" value="a6" class="option-checkbox">
+                        <label for="flyer-format-3" class="option-label">А6</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Количество сторон</label>
+                    <div class="options-group">
+                        <input type="radio" id="flyer-sides-1" name="flyer-sides" value="one" class="option-checkbox" checked>
+                        <label for="flyer-sides-1" class="option-label">Односторонние</label>
+                        
+                        <input type="radio" id="flyer-sides-2" name="flyer-sides" value="two" class="option-checkbox">
+                        <label for="flyer-sides-2" class="option-label">Двусторонние</label>
+                    </div>
+                </div>
+            `,
+            'box': `
+                <div class="form-group">
+                    <label>Тип коробки</label>
+                    <div class="options-group">
+                        <input type="radio" id="box-type-1" name="box-type" value="standard" class="option-checkbox" checked>
+                        <label for="box-type-1" class="option-label">Стандартная</label>
+                        
+                        <input type="radio" id="box-type-2" name="box-type" value="custom" class="option-checkbox">
+                        <label for="box-type-2" class="option-label">Индивидуальная</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Размер коробки</label>
+                    <div class="options-group">
+                        <input type="radio" id="box-size-1" name="box-size" value="small" class="option-checkbox" checked>
+                        <label for="box-size-1" class="option-label">Маленькая (до 15×15×5 см)</label>
+                        
+                        <input type="radio" id="box-size-2" name="box-size" value="medium" class="option-checkbox">
+                        <label for="box-size-2" class="option-label">Средняя (до 30×20×10 см)</label>
+                        
+                        <input type="radio" id="box-size-3" name="box-size" value="large" class="option-checkbox">
+                        <label for="box-size-3" class="option-label">Большая (до 50×30×20 см)</label>
+                    </div>
+                </div>
+            `
+        };
+
+        // Калькулятор стоимости с минимальными ценами и исправленными формулами
+        const updatePrice = () => {
+            const productType = document.getElementById('product-type').value;
+            const quantity = parseInt(document.getElementById('quantity').value) || 500;
+            const material = document.getElementById('material-type').value;
+            const density = document.querySelector('input[name="density"]:checked')?.value || '100-130';
+            const lamination = document.querySelector('input[name="lamination"]:checked')?.value || 'none';
+            const laminationSide = document.querySelector('input[name="lamination-side"]:checked')?.value || 'one';
+            const foilType = document.getElementById('foil-type').value;
+            
+            // Получаем базовую цену и минимальную стоимость
+            const productPrice = basePrices[productType];
+            let basePrice = productPrice.base;
+            const minPrice = productPrice.minPrice || 500;
+            
+            // Наценки за материал
+            if (productPrice.material && productPrice.material[material]) {
+                basePrice += productPrice.material[material];
+            }
+            
+            // Наценки за плотность
+            if (productPrice.density && productPrice.density[density]) {
+                basePrice += productPrice.density[density];
+            }
+            
+            // Наценки за ламинацию
+            if (lamination !== 'none') {
+                const laminationPrice = productPrice.lamination?.[lamination] || 0;
+                basePrice += laminationPrice;
+                
+                // Если двухсторонняя ламинация
+                if (laminationSide === 'two' && (productType === 'postcard' || productType === 'flyer')) {
+                    basePrice += laminationPrice * 0.7;
+                }
+            }
+            
+            // Наценки за тиснение
+            if (foilType !== 'none') {
+                if (productType === 'box') {
+                    basePrice += productPrice.foil;
+                } else if (productType === 'magazine' || productType === 'book') {
+                    const coverType = document.querySelector(`input[name="${productType}-cover"]:checked`)?.value;
+                    if (coverType === 'foil') {
+                        basePrice += productPrice.cover.foil;
+                    }
+                } else {
+                    basePrice += 1.5;
+                }
+            }
+            
+            // Дополнительные наценки для специфичных продуктов
+            if (productType === 'visiting-card') {
+                const size = document.querySelector('input[name="visiting-size"]:checked')?.value;
+                basePrice += productPrice.size[size];
+                
+                const sides = document.querySelector('input[name="visiting-sides"]:checked')?.value;
+                if (sides === 'two') basePrice *= 1.3;
+            }
+            
+            if (productType === 'sticker') {
+                const format = document.querySelector('input[name="sticker-format"]:checked')?.value;
+                basePrice += productPrice.format[format];
+                
+                const cut = document.querySelector('input[name="sticker-cut"]:checked')?.value;
+                if (cut === 'die-cut') {
+                    basePrice += productPrice.cut[cut];
+                    const diameter = document.querySelector('input[name="sticker-diameter"]:checked')?.value;
+                    if (diameter) basePrice += parseInt(diameter) * 0.02;
+                } else if (cut === 'none') {
+                    basePrice += productPrice.cut[cut];
+                }
+            }
+            
+            if (productType === 'postcard') {
+                const print = document.querySelector('input[name="postcard-print"]:checked')?.value;
+                if (print === 'two') basePrice *= 1.4;
+            }
+            
+            if (productType === 'booklet') {
+                const format = document.querySelector('input[name="booklet-format"]:checked')?.value;
+                if (format === 'custom') basePrice += productPrice.format[format];
+            }
+            
+            if (productType === 'magazine') {
+                const pages = parseInt(document.getElementById('magazine-pages')?.value || 32);
+                basePrice += pages * productPrice.pages.perPage;
+                
+                const cover = document.querySelector('input[name="magazine-cover"]:checked')?.value;
+                if (cover !== 'none') {
+                    basePrice += productPrice.cover[cover];
+                }
+                
+                const binding = document.querySelector('input[name="magazine-binding"]:checked')?.value;
+                basePrice += productPrice.binding[binding];
+            }
+            
+            if (productType === 'calendar') {
+                const type = document.querySelector('input[name="calendar-type"]:checked')?.value;
+                basePrice += productPrice.type[type];
+            }
+            
+            if (productType === 'notebook') {
+                const binding = document.querySelector('input[name="notebook-binding"]:checked')?.value;
+                basePrice += productPrice.binding[binding];
+                
+                const format = document.querySelector('input[name="notebook-format"]:checked')?.value;
+                basePrice += productPrice.format[format];
+                
+                const pages = parseInt(document.getElementById('notebook-pages')?.value || 40);
+                basePrice += pages * productPrice.pages;
+            }
+            
+            if (productType === 'book') {
+                const pages = parseInt(document.getElementById('book-pages')?.value || 100);
+                basePrice += pages * productPrice.pages.perPage;
+                
+                const binding = document.querySelector('input[name="book-binding"]:checked')?.value;
+                basePrice += productPrice.binding[binding];
+                
+                const cover = document.querySelector('input[name="book-cover"]:checked')?.value;
+                if (cover !== 'none') {
+                    basePrice += productPrice.cover[cover];
+                }
+            }
+            
+            if (productType === 'flyer') {
+                const format = document.querySelector('input[name="flyer-format"]:checked')?.value;
+                basePrice += productPrice.format[format];
+                
+                const sides = document.querySelector('input[name="flyer-sides"]:checked')?.value;
+                if (sides === 'two') basePrice *= 1.4;
+                
+                // Скидки за объем для листовок
+                if (productPrice.quantityDiscount) {
+                    if (quantity >= 10000) {
+                        basePrice *= (1 - productPrice.quantityDiscount['10000']);
+                    } else if (quantity >= 5000) {
+                        basePrice *= (1 - productPrice.quantityDiscount['5000']);
+                    } else if (quantity >= 1000) {
+                        basePrice *= (1 - productPrice.quantityDiscount['1000']);
+                    }
+                }
+            }
+            
+            if (productType === 'box') {
+                const type = document.querySelector('input[name="box-type"]:checked')?.value;
+                if (type === 'custom') basePrice *= 1.5;
+                
+                const size = document.querySelector('input[name="box-size"]:checked')?.value;
+                if (size === 'medium') basePrice *= 1.3;
+                if (size === 'large') basePrice *= 1.7;
+            }
+            
+            // Рассчитываем общую стоимость и применяем минимальную цену
+            let total = basePrice * quantity;
+            total = Math.max(minPrice, Math.round(total * 100) / 100);
+            
+            document.querySelector('.total-price').textContent = `${total.toFixed(2)} ₽`;
+        };
+
+        // Обновление доступных материалов при выборе продукта
+        document.getElementById('product-type').addEventListener('change', function() {
+            const productType = this.value;
+            const materialSelect = document.getElementById('material-type');
+            const productOptionsContainer = document.getElementById('product-options');
+            const laminationGroup = document.getElementById('lamination-group');
+            const laminationSideGroup = document.getElementById('lamination-side-group');
+            const foilGroup = document.getElementById('foil-group');
+            
+            // Очищаем и добавляем только допустимые материалы
+            materialSelect.innerHTML = '';
+            const allowedMaterials = materialLimitations[productType] || 
+                ['offset', 'coated', 'design', 'kraft', 'cardboard', 'self-adhesive'];
+            
+            const materialOptions = {
+                'offset': 'Офсетная бумага',
+                'coated': 'Мелованная бумага',
+                'design': 'Дизайнерская бумага',
+                'kraft': 'Крафтовая бумага',
+                'cardboard': 'Картон',
+                'self-adhesive': 'Самоклеящаяся бумага'
+            };
+            
+            allowedMaterials.forEach(material => {
+                const option = document.createElement('option');
+                option.value = material;
+                option.textContent = materialOptions[material];
+                materialSelect.appendChild(option);
+            });
+            
+            // Показываем/скрываем группы опций
+            laminationGroup.style.display = productType === 'box' ? 'none' : 'block';
+            laminationSideGroup.style.display = (productType === 'postcard' || productType === 'flyer') ? 'block' : 'none';
+            foilGroup.style.display = 'block';
+            
+            // Добавляем специфичные опции для продукта
+            productOptionsContainer.innerHTML = productOptions[productType] || '';
+            productOptionsContainer.classList.toggle('active', !!productOptions[productType]);
+            
+            // Инициализируем события для новых элементов
+            if (productType === 'sticker') {
+                document.querySelector('input[name="sticker-cut"]').addEventListener('change', function() {
+                    document.getElementById('sticker-diameter-group').style.display = 
+                        this.value === 'die-cut' ? 'block' : 'none';
+                    updatePrice();
+                });
+            }
+            
+            updatePrice();
+        });
+
+        // Обновление доступных плотностей при выборе материала
+        document.getElementById('material-type').addEventListener('change', function() {
+            const material = this.value;
+            const densityContainer = document.querySelector('.density-options .options-group');
+            densityContainer.innerHTML = '';
+            
+            densityOptions[material].forEach(density => {
+                const id = `density-${density.replace('-', '')}`;
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.id = id;
+                radio.name = 'density';
+                radio.value = density;
+                radio.className = 'option-checkbox';
+                if (density === '100-130' || (material === 'cardboard' && density === '250-350')) {
+                    radio.checked = true;
+                }
+                
+                const label = document.createElement('label');
+                label.htmlFor = id;
+                label.className = 'option-label';
+                label.textContent = density === '250-350' ? '350 г/м²' : `${density} г/м²`;
+                
+                densityContainer.appendChild(radio);
+                densityContainer.appendChild(label);
+                
+                radio.addEventListener('change', updatePrice);
+            });
+            
+            updatePrice();
+        });
+
+        // Обработка выбора тиснения
+        document.querySelectorAll('.foil-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                document.getElementById('foil-type').value = value;
+                
+                // Сбрасываем все выделения
+                document.querySelectorAll('.foil-circle').forEach(circle => {
+                    circle.classList.remove('selected');
+                });
+                
+                // Выделяем выбранный
+                if (value !== 'none') {
+                    this.querySelector('.foil-circle').classList.add('selected');
+                }
+                
+                updatePrice();
+            });
+        });
+
+        // Загрузка файла
+        document.getElementById('file-upload').addEventListener('change', function() {
+            const fileName = this.files[0]?.name || 'Файл не выбран';
+            document.getElementById('file-name').textContent = fileName;
+        });
+
+        // Слушатели событий для всех динамических элементов
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('input[type="radio"], input[type="number"], select')) {
+                updatePrice();
+            }
+        });
+
+        // Отправка формы
+        document.getElementById('price-calculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Проверка авторизации (заглушка)
+            const isLoggedIn = false; // Здесь должна быть реальная проверка авторизации
+            
+            if (!isLoggedIn) {
+                alert('Для оформления заказа необходимо авторизоваться. Пожалуйста, войдите в систему.');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            alert('Заявка отправлена! Мы свяжемся с вами для уточнения деталей.');
+            
+            // Сброс формы
+            this.reset();
+            document.querySelectorAll('.foil-circle').forEach(circle => {
+                circle.classList.remove('selected');
+            });
+            document.getElementById('foil-type').value = 'none';
+            document.getElementById('file-name').textContent = 'Файл не выбран';
+            document.querySelector('.total-price').textContent = '0 ₽';
+        });
+
+        // Инициализация
+        document.getElementById('product-type').dispatchEvent(new Event('change'));
+        updatePrice();
+
+        // Блокировка кнопки "Оформить заказ" для неавторизованных пользователей
+        const orderButton = document.getElementById('order-button');
+        const authNotice = document.getElementById('auth-notice');
+        
+        // Здесь должна быть проверка авторизации
+        const isLoggedIn = false; // В реальном приложении это должно проверяться
+        
+        if (!isLoggedIn) {
+            orderButton.disabled = true;
+            orderButton.classList.add('btn-disabled');
+            authNotice.style.display = 'flex'; // Показываем уведомление
+        } else {
+            orderButton.disabled = false;
+            orderButton.classList.remove('btn-disabled');
+            authNotice.style.display = 'none'; // Скрываем уведомление
+        }
+    </script>
+</body>
+</html>

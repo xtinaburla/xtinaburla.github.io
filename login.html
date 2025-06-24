@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Типография Призма</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #239439;
+            --primary-dark: #1c7a2e;
+            --secondary: #A9B4B5;
+            --dark: #333333;
+            --light: #FFFFFF;
+            --gray: #F5F5F5;
+            --light-gray: #e9ecef;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            color: var(--light);
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--light);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Герой-секция */
+        .hero-account {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: var(--light);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-account h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        /* Основной контент */
+        .account-section {
+            padding: 60px 0 80px;
+        }
+        
+        .account-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        
+        .auth-form {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .auth-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-form h2 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .auth-form h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--secondary);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-link {
+            background: none;
+            color: var(--primary);
+            text-decoration: underline;
+            padding: 0;
+            width: auto;
+        }
+        
+        .btn-link:hover {
+            background: none;
+            color: var(--primary-dark);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-3 {
+            margin-top: 15px;
+        }
+        
+        .mt-4 {
+            margin-top: 20px;
+        }
+        
+        .text-danger {
+            color: var(--danger);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .orders-container {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 800px;
+            margin-top: 40px;
+            display: none;
+        }
+        
+        .orders-container h2 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+        
+        .order-item {
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .order-number {
+            color: var(--primary);
+        }
+        
+        .order-date {
+            color: var(--secondary);
+        }
+        
+        .order-details {
+            color: var(--dark);
+        }
+        
+        .no-orders {
+            text-align: center;
+            padding: 30px;
+            color: var(--secondary);
+        }
+        
+        /* Табы */
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--secondary);
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-account {
+                padding: 80px 0;
+            }
+            
+            .hero-account h1 {
+                font-size: 32px;
+            }
+            
+            .auth-form {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="prismalogo.jpg" alt="Логотип Призма">
+                <h1>Призма</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="account.html">Личный кабинет</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero-account">
+        <div class="container">
+            <h1>Личный кабинет</h1>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-container">
+                <!-- Форма входа -->
+                <div class="auth-form" id="login-form">
+                    <h2>Вход в личный кабинет</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-email">Электронная почта</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                            <div class="text-danger" id="login-email-error">Пожалуйста, введите корректный email</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Пароль</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                            <div class="text-danger" id="login-password-error">Пожалуйста, введите пароль</div>
+                        </div>
+                        <button type="submit" class="btn">Войти</button>
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn-link" id="show-register">Нет аккаунта? Зарегистрируйтесь</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Форма регистрации -->
+                <div class="auth-form" id="register-form" style="display: none;">
+                    <h2>Регистрация</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-name">Имя</label>
+                            <input type="text" class="form-control" id="reg-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-surname">Фамилия</label>
+                            <input type="text" class="form-control" id="reg-surname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-patronymic">Отчество (необязательно)</label>
+                            <input type="text" class="form-control" id="reg-patronymic">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-phone">Телефон</label>
+                            <input type="tel" class="form-control" id="reg-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Электронная почта</label>
+                            <input type="email" class="form-control" id="reg-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-company">Название компании или ИНН</label>
+                            <input type="text" class="form-control" id="reg-company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Пароль</label>
+                            <input type="password" class="form-control" id="reg-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm-password">Подтвердите пароль</label>
+                            <input type="password" class="form-control" id="reg-confirm-password" required>
+                            <div class="text-danger" id="password-match-error">Пароли не совпадают</div>
+                        </div>
+                        <button type="submit" class="btn">Зарегистрироваться</button>
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn-link" id="show-login">Уже есть аккаунт? Войдите</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Форма подтверждения email -->
+                <div class="auth-form" id="verify-form" style="display: none;">
+                    <h2>Подтверждение email</h2>
+                    <p>На вашу почту отправлен код подтверждения. Введите его ниже:</p>
+                    <form id="verifyForm">
+                        <div class="form-group">
+                            <label for="verify-code">Код подтверждения</label>
+                            <input type="text" class="form-control" id="verify-code" required>
+                        </div>
+                        <button type="submit" class="btn">Подтвердить</button>
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn-link" id="resend-code">Отправить код повторно</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Список заказов (показывается после входа) -->
+            <div class="orders-container" id="orders-container">
+                <h2>Мои заявки</h2>
+                <div class="tabs">
+                    <div class="tab active" data-tab="all">Все заявки</div>
+                </div>
+                
+                <div class="tab-content active" data-tab-content="all" id="all-orders">
+                    <div class="order-item">
+                        <div class="order-header">
+                            <span class="order-number">Заявка #PR-2023-0452</span>
+                            <span class="order-date">15.10.2023</span>
+                        </div>
+                        <div class="order-details">
+                            <p>Визитки, 100 шт., полноцветная печать, мелованная бумага 300 г/м², матовая ламинация, скругление углов</p>
+                        </div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="order-header">
+                            <span class="order-number">Заявка #PR-2023-0387</span>
+                            <span class="order-date">02.09.2023</span>
+                        </div>
+                        <div class="order-details">
+                            <p>Буклеты А4, 500 шт., полноцветная печать, мелованная бумага 150 г/м², фальцовка</p>
+                        </div>
+                    </div>
+                    
+                    <div class="no-orders" style="display: none;">
+                        <p>У вас пока нет заявок</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Иркутск, ул. Рабочего Штаба, 78/5</li>
+                        <li>+7 (395) 248-22-02</li>
+                        <li>prisma-irk@mail.ru</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="mission.html">Наша миссия</a></li>
+                        <li><a href="payment.html">Оплата</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Типография «Призма». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Переключение между формами входа и регистрации
+        document.getElementById('show-register').addEventListener('click', function() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        });
+        
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+        
+        // Проверка совпадения паролей при регистрации
+        document.getElementById('reg-confirm-password').addEventListener('input', function() {
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = this.value;
+            const errorElement = document.getElementById('password-match-error');
+            
+            if (password !== confirmPassword) {
+                errorElement.style.display = 'block';
+            } else {
+                errorElement.style.display = 'none';
+            }
+        });
+        
+        // Обработка формы регистрации
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                document.getElementById('password-match-error').style.display = 'block';
+                return;
+            }
+            
+            // Здесь должна быть отправка данных на сервер
+            // Для демонстрации просто покажем форму подтверждения
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('verify-form').style.display = 'block';
+        });
+        
+        // Обработка формы входа
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (!email) {
+                document.getElementById('login-email-error').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('login-email-error').style.display = 'none';
+            }
+            
+            if (!password) {
+                document.getElementById('login-password-error').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('login-password-error').style.display = 'none';
+            }
+            
+            // Здесь должна быть проверка данных на сервере
+            // Для демонстрации просто покажем список заказов
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('orders-container').style.display = 'block';
+        });
+        
+        // Обработка формы подтверждения email
+        document.getElementById('verifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь должна быть проверка кода подтверждения
+            // Для демонстрации просто покажем сообщение об успехе и форму входа
+            alert('Email успешно подтвержден! Теперь вы можете войти в систему.');
+            document.getElementById('verify-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+        
+        // Повторная отправка кода подтверждения
+        document.getElementById('resend-code').addEventListener('click', function() {
+            alert('Код подтверждения отправлен повторно на ваш email.');
+        });
+    </script>
+</body>
+</html>

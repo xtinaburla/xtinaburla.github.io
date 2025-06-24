@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Условия оплаты | Типография Призма</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <style>
+        :root {
+            --primary: #239439;
+            --secondary: #A9B4B5;
+            --dark: #333333;
+            --light: #FFFFFF;
+            --gray: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            color: var(--light);
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--light);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Герой-секция */
+        .hero-payment {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: var(--light);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-payment h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero-payment p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        /* Основной контент */
+        .payment-section {
+            padding: 80px 0;
+        }
+        
+        .payment-block {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .payment-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-block h2 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .payment-block h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .payment-block p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .payment-block ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .payment-block ul li {
+            margin-bottom: 10px;
+        }
+        
+        .payment-block p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .method-card {
+            flex: 1 1 300px;
+            background: var(--light);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .method-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-payment {
+                padding: 80px 0;
+            }
+            
+            .hero-payment h1 {
+                font-size: 32px;
+            }
+            
+            .payment-block {
+                padding: 30px 20px;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="prismalogo.jpg" alt="Логотип Призма">
+                <h1>Призма</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+		<li><a href="contacts.html">Контакты</a></li>
+		<li><a href="login.html">Личный кабинет</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero-payment">
+        <div class="container">
+            <h1>Условия оплаты</h1>
+            <p>Удобные и безопасные способы оплаты для физических и юридических лиц</p>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-block">
+                <h2>Безналичный расчет</h2>
+                <p>Оплата осуществляется на расчетный счет нашей типографии. Мы работаем с юридическими лицами и индивидуальными предпринимателями по безналичному расчету.</p>
+                
+                <div class="payment-methods">
+                    <div class="method-card">
+                        <h3>Для юридических лиц</h3>
+                        <p>После согласования заказа мы выставляем счет на оплату, который действителен в течение 3 банковских дней.</p>
+                        <p>Отправка счета происходит по электронной почте или через мессенджеры.</p>
+                    </div>
+                    <div class="method-card">
+                        <h3>Реквизиты для оплаты</h3>
+                        <p>Полные реквизиты компании для оплаты вы можете запросить у своего менеджера или найти в разделе контакты.</p>
+                        <p>После оплаты обязательно сообщите менеджеру дату и сумму платежа.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-block">
+                <h2>Работа с юридическими лицами</h2>
+                <p>С юридическими лицами мы работаем только по безналичному расчету. Вот основные условия сотрудничества:</p>
+                
+                <ul>
+                    <li>Выдача готовой продукции осуществляется уполномоченным представителям по должным образом оформленным доверенностям</li>
+                    <li>Счет на оплату можно получить удаленно у обслуживающего вас менеджера</li>
+                    <li>Для выставления счета необходимо предоставить карточку с реквизитами компании</li>
+                    <li>Производство заказа начинается после поступления средств на наш расчетный счет</li>
+                </ul>
+                
+                <p>Мы ценим время наших клиентов и стараемся максимально упростить процесс оформления и оплаты заказов для юридических лиц.</p>
+            </div>
+            
+            <div class="payment-block">
+                <h2>Дополнительная информация</h2>
+                <p>Если у вас остались вопросы по условиям оплаты, наши менеджеры с радостью проконсультируют вас:</p>
+                <ul>
+                    <li>По телефону: +7 (395) 248-22-02</li>
+                    <li>По электронной почте: prisma-irk@mail.ru</li>
+                    <li>В нашем офисе: г. Иркутск, ул. Рабочего Штаба, 78/5</li>
+                </ul>
+                <p>Рабочие часы: Пн-Пт с 8:00 до 17:00, Сб-Вс - выходные.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Иркутск, ул. Рабочего Штаба, 78/5</li>
+                        <li>+7 (395) 248-22-02</li>
+                        <li>prisma-irk@mail.ru</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="mission.html">Наша миссия</a></li>
+                        <li><a href="payment.html">Оплата</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Типография «Призма». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

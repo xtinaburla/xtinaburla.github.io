@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша миссия | Типография Призма</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <style>
+        :root {
+            --primary: #239439;
+            --secondary: #A9B4B5;
+            --dark: #333333;
+            --light: #FFFFFF;
+            --gray: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            color: var(--light);
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--light);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Герой-секция */
+        .hero-mission {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: var(--light);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-mission h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero-mission p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        /* Основной контент */
+        .mission-section {
+            padding: 80px 0;
+        }
+        
+        .mission-block {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .mission-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission-block h2 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .mission-block h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .mission-block p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .mission-block p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Клиенты */
+        .clients-section {
+            padding: 60px 0;
+            background: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .client-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            padding: 15px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .client-logo img {
+            width: 100%;
+            height: 60px;
+            object-fit: contain;
+            object-position: center;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-mission {
+                padding: 80px 0;
+            }
+            
+            .hero-mission h1 {
+                font-size: 32px;
+            }
+            
+            .mission-block {
+                padding: 30px 20px;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="prismalogo.jpg" alt="Логотип Призма">
+                <h1>Призма</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+		<li><a href="contacts.html">Контакты</a></li>
+		<li><a href="login.html">Личный кабинет</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero-mission">
+        <div class="container">
+            <h1>Типография "Призма"</h1>
+            <p>Мы создаем полиграфию, которая работает на ваш бизнес</p>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-block">
+                <p>Мы — современная типография. Наша команда — профессионалы в полиграфии, которые знают тонкости печати, подбора материалов и цвета. Мы гарантируем минимальные сроки на печать тиража и внимание к любому вашему вопросу.</p>
+                <p>Помогаем брендам и бизнесу выделяться с помощью качественной печатной продукции.</p>
+            </div>
+            
+            <div class="mission-block">
+                <h2>Миссия компании</h2>
+                <p>В мире, в котором важна каждая деталь, мы создаем полиграфию, работающую на ваш бизнес.</p>
+                <p>Наша миссия — сделать заказ печатной продукции быстрым, удобным и приятным процессом, чтобы вы могли сосредоточиться на главном — своём деле.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Клиенты -->
+    <section class="clients-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши клиенты</h2>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <img src="https://static.tildacdn.com/tild3462-3437-4234-b733-303136326532/logo_4.png" alt="Альянс Ресторанс">
+                </div>
+                <div class="client-logo">
+                    <img src="https://iraero.ru/local/templates/main/img/logo-black.svg" alt="IRAERO">
+                </div>
+                <div class="client-logo">
+                    <img src="https://pharmasyntez.com/bitrix/templates/s1/images/pharmasyntez.svg" alt="ФАРМАСИНТЕЗ">
+                </div>
+                <div class="client-logo">
+                    <img src="https://toplogos.ru/images/logo-sber.png" alt="СБЕР">
+                </div>
+                <div class="client-logo">
+                    <img src="https://static.tildacdn.com/tild3938-6531-4263-b361-326537316439/_.png"Слата">
+                </div>
+                <div class="client-logo">
+                    <img src="https://strizhi.city/files/site/img/header/logo.svg"Стрижи СИТИ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Иркутск, ул. Рабочего Штаба, 78/5</li>
+                        <li>+7 (395) 248-22-02</li>
+                        <li>prisma-irk@mail.ru</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="mission.html">Наша миссия</a></li>
+			<li><a href="payment.html">Оплата</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Типография «Призма». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
