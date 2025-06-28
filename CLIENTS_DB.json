@@ -1,0 +1,54 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "Иван",
+      "surname": "Иванов",
+      "patronymic": "Иванович",
+      "phone": "+79991234567",
+      "email": "ivanov@example.com",
+      "company": "ООО Ромашка",
+      "inn": "1234567890",
+      "password": "$2a$10$hashed_password_here",
+      "verified": true,
+      "registration_date": "2023-10-20T12:00:00Z",
+      "last_login": "2023-10-25T15:30:00Z",
+      "orders": [
+        {
+          "order_id": "PR-2023-0452",
+          "date": "2023-10-15",
+          "description": "Визитки, 100 шт., полноцветная печать, мелованная бумага 300 г/м², матовая ламинация, скругление углов",
+          "status": "completed"
+        },
+        {
+          "order_id": "PR-2023-0387",
+          "date": "2023-09-02",
+          "description": "Буклеты А4, 500 шт., полноцветная печать, мелованная бумага 150 г/м², фальцовка",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Петр",
+      "surname": "Петров",
+      "patronymic": "",
+      "phone": "+79998765432",
+      "email": "petrov@example.com",
+      "company": "ИП Петров",
+      "inn": "0987654321",
+      "password": "$2a$10$another_hashed_password",
+      "verified": false,
+      "registration_date": "2023-10-22T10:15:00Z",
+      "last_login": null,
+      "orders": []
+    }
+  ],
+  "verification_codes": [
+    {
+      "email": "petrov@example.com",
+      "code": "A1B2C3",
+      "expires": "2023-10-23T10:15:00Z"
+    }
+  ]
+}

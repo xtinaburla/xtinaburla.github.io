@@ -1,0 +1,83 @@
+{
+  "orders": [
+    {
+      "order_id": "PR-2023-0452",
+      "client_id": 1,
+      "date": "2023-10-15T14:30:00Z",
+      "status": "completed",
+      "product_type": "visiting-card",
+      "quantity": 100,
+      "material": "coated",
+      "density": "300",
+      "size": "standard",
+      "sides": "two",
+      "lamination": "matte",
+      "lamination_side": "one",
+      "foil": "gold",
+      "options": {
+        "cut_type": null,
+        "format": null,
+        "pages": null
+      },
+      "file_url": "/uploads/design_0452.pdf",
+      "comment": "Срочный заказ. Нужно к 20 октября.",
+      "price": 1200,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PR-2023-0387",
+      "client_id": 1,
+      "date": "2023-09-02T11:15:00Z",
+      "status": "completed",
+      "product_type": "booklet",
+      "quantity": 500,
+      "material": "coated",
+      "density": "150",
+      "format": "euro",
+      "lamination": "glossy",
+      "options": {
+        "pages": 8
+      },
+      "file_url": "/uploads/booklet_0387.ai",
+      "comment": "Буклеты для выставки",
+      "price": 3500,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PR-2024-0012",
+      "client_id": 2,
+      "date": "2024-01-10T09:45:00Z",
+      "status": "in_progress",
+      "product_type": "sticker",
+      "quantity": 1000,
+      "material": "self-adhesive",
+      "density": "150",
+      "cut_type": "plotter",
+      "format": "a6",
+      "file_url": "/uploads/stickers_0012.png",
+      "comment": "Наклейки для магазина",
+      "price": 1800,
+      "payment_status": "partial"
+    }
+  ],
+  "materials": {
+    "offset": "Офсетная бумага",
+    "coated": "Мелованная бумага",
+    "design": "Дизайнерская бумага",
+    "kraft": "Крафтовая бумага",
+    "cardboard": "Картон",
+    "self-adhesive": "Самоклеящаяся бумага"
+  },
+  "statuses": [
+    "new",
+    "in_progress",
+    "completed",
+    "cancelled"
+  ],
+  "payment_statuses": [
+    "pending",
+    "partial",
+    "paid",
+    "refunded"
+  ]
+}
